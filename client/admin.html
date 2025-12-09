@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="main.css" /> 
+    <style>
+        .btn-status,
+        .btn-edit,
+        .btn-delete {
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-status {
+            background: #0ea5a4;
+            color: white;
+            box-shadow: 0 4px 12px rgba(14, 165, 164, 0.30);
+        }
+        .btn-status:hover {
+            background: #0b8d8c;
+        }
+
+        .btn-edit {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.30);
+        }
+        .btn-edit:hover {
+            background: #1e4fc2;
+        }
+
+        
+        .btn-delete {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.30);
+        }
+        .btn-delete:hover {
+            background: #b91c1c;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: rgb(0, 0, 0); 
+            margin-top: 10px;
+        }
+
+        .status-pendiente {
+            background-color: #dc3545; 
+        }
+
+     
+        .status-resuelto {
+            background-color: #28a745;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header-reportes">
+            <div class="brand">Panel de Gestión Admin</div>
+            <nav>
+                <a href="index.html">Cerrar Sesión</a>
+            </nav>
+        </header>
+
+        <h2 class="section-title">Gestión de Eco-Reportes </h2>
+        <p class="lead-text">Aquí puedes actualizar el estado.</p>
+
+        <section id="admin-reportes-container" class="cards-grid">
+            <p>Cargando reportes para gestión...</p>
+        </section>
+
+        <footer>
+            © 2025 Derechos reservados.
+        </footer>
+    </div>
+    
+    
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
