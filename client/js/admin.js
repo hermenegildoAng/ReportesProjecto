@@ -1,5 +1,5 @@
 
-const API_URL = 'http://localhost:5000/api/reportes';
+const API_URL = '/api/reportes';
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarReportesAdmin();
