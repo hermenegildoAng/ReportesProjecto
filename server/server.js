@@ -1,10 +1,24 @@
+const fs = require('fs');
 const path = require('path');
 
 require('dotenv').config({ path: '../.env' }); 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); 
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const uploadDir = path.join(__dirname, '..', 'uploads'); // Ruta correcta
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+    console.log(`Carpeta de uploads creada en: ${uploadDir}`);
+}
 
 const app = express();
 const staticPath = path.join(__dirname, '..', 'client'); 
@@ -31,3 +45,14 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Servidor Express en funcionamiento: http://localhost:${PORT}`));
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'reportes_projecto_evidencia',
+        allowed_formats: ['jpeg', 'png', 'jpg'], 
+        transformation: [{ width: 500, height: 500, crop: "limit" }] 
+    }
+});
+
+const upload = multer({ storage: storage });
